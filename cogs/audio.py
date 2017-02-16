@@ -1116,12 +1116,16 @@ class Audio:
         """Sets the volume (0 - 100)
         Note: volume may be set up to 200 but you may experience clipping."""
         server = ctx.message.server
+        vol = self.get_server_settings(server)['VOLUME']
         if percent is None:
-            vol = self.get_server_settings(server)['VOLUME']
             msg = "Volume is currently set to %d%%" % vol
         elif percent >= 0 and percent <= 200:
             self.set_server_setting(server, "VOLUME", percent)
-            msg = "Volume is now set to %d." % percent
+            msg = "You must got a downie ass brain cause the volume is already at {0}".format(percent)
+            if (percent < vol):
+                msg = "You must got little pussy ears if you want to turn it down to {0}.".format(percent)
+            elif (percent > vol):
+                msg = "Damn the fuck bro you gonna bust yo ears if you puttin' it up to {0}".format(percent)
             if percent > 100:
                 msg += ("\nWarning: volume levels above 100 may result in"
                         " clipping")
@@ -1377,6 +1381,48 @@ class Audio:
 
         self._stop_player(server)
         self._clear_queue(server)
+        self._add_to_queue(server, url)
+
+    @commands.command(pass_context=True, no_pm=True)
+    async def cena(self, ctx):
+        await self.bot.say("DOO DA DI DOOOOOO")
+        url = "https://www.youtube.com/watch?v=4k1xY7v8dDQ"
+        server = ctx.message.server
+        self._add_to_queue(server, url)
+
+    @commands.command(pass_context=True,no_pm=True)
+    async def FUSRODAH(self, ctx):
+        await self.bot.say("FUS RO DAH DI DAH DOO")
+        url = "https://www.youtube.com/watch?v=WBQQjW_-w54"
+        server = ctx.message.server
+        self._add_to_queue(server, url)
+
+    @commands.command(pass_context=True,no_pm=True)
+    async def tim(self, ctx):
+        await self.bot.say("???????????")
+        url = "https://www.youtube.com/watch?v=KnsiZOJjfUg"
+        server = ctx.message.server
+        self._add_to_queue(server, url)
+
+    @commands.command(pass_context=True,no_pm=True)
+    async def ruh(self, ctx):
+        await self.bot.say("RUH")
+        url = "https://www.youtube.com/watch?v=FMEwoGAjZ-s"
+        server = ctx.message.server
+        self._add_to_queue(server, url)
+
+    @commands.command(pass_context=True,no_pm=True)
+    async def RICHARD(self, ctx):
+        await self.bot.say("RICHARD NO")
+        url = "https://soundcloud.com/theyungdorf/richard-no"
+        server = ctx.message.server
+        self._add_to_queue(server, url)
+
+    @commands.command(pass_context=True,no_pm=True)
+    async def spiduh(self, ctx):
+        await self.bot.say("LIKE A SUMBOHDY FAK U BIT")
+        url = "https://soundcloud.com/theyungdorf/likea"
+        server = ctx.message.server
         self._add_to_queue(server, url)
 
     @commands.command(pass_context=True, no_pm=True)
